@@ -57,8 +57,7 @@ class _LoginTabScreenState extends State<LoginTabScreen> {
                 TabBar(
                   labelColor: Colors.green[900],
                   tabs: <Widget>[
-                    
-                    Tab(                 
+                    Tab(
                       text: "Sign In",
                     ),
                     Tab(
@@ -74,7 +73,7 @@ class _LoginTabScreenState extends State<LoginTabScreen> {
                           child: Column(
                             children: [
                               Padding(
-                                padding: EdgeInsets.all(40),
+                                padding: EdgeInsets.all(20),
                               ),
                               Text(
                                 'Login in your account.',
@@ -109,13 +108,47 @@ class _LoginTabScreenState extends State<LoginTabScreen> {
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 15),
+                              Container(
+                                height: 2.0,
+                                width: 300,
+                                color: Colors.green,
+                              ),
+                              SizedBox(height: 15),
+                              Text('or'),
+                              SizedBox(height: 15),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/qrscan.png',
+                                      height: 30,
+                                      width: 40,
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        primary: Colors.green,
+                                        textStyle: const TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: const Text('Scan your ID card'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 20),
                               CustomElevatedButton(
                                 text: 'Login',
                                 press: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomeNavigation()));
+                                          builder: (context) =>
+                                              HomeNavigation()));
                                 },
                               ),
                             ],
@@ -180,6 +213,5 @@ class _LoginTabScreenState extends State<LoginTabScreen> {
         ),
       ),
     );
-    
   }
 }

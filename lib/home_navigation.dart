@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Screens/gps_map.dart';
-import 'Screens/home.dart';
-import 'Screens/calendar_screen.dart';
+import 'Screens/FindingRfid/finding_rfid.dart';
+
+import 'Screens/home/home.dart';
 import 'Screens/history.dart';
 import 'Screens/profile.dart';
 
@@ -16,7 +16,7 @@ class _HomeState extends State<HomeNavigation> {
   int currentTab = 0;
   final List<Widget> screens = [
     Home(),
-    Calender(),
+    FindingRfid(),
     History(),
     Profile(),
   ];
@@ -51,15 +51,19 @@ class _HomeState extends State<HomeNavigation> {
         child: FloatingActionButton(
           backgroundColor: Colors.green,
           hoverElevation: 1.5,
-          shape: StadiumBorder(side: BorderSide(color: Color.fromARGB(255, 139, 235, 143), width: 7)),
+          shape: StadiumBorder(
+              side: BorderSide(
+                  color: Color.fromARGB(255, 139, 235, 143), width: 7)),
           elevation: 1.5,
-          child: Icon(
-            Icons.map,
-            size: 40,
-          ),
+          child: Container(
+              width: 50,
+              height: 50,
+              child: Image.asset('assets/images/scanhand.png')),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => GpsMap()));
+            setState(() {
+              currentScreens = FindingRfid();
+              currentTab = 1;
+            });
           },
         ),
       ),
@@ -103,7 +107,7 @@ class _HomeState extends State<HomeNavigation> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreens = Calender();
+                        currentScreens = FindingRfid();
                         currentTab = 1;
                       });
                     },
@@ -111,11 +115,11 @@ class _HomeState extends State<HomeNavigation> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.event_note,
+                          Icons.map,
                           color: currentTab == 1 ? Colors.green : Colors.grey,
                         ),
                         Text(
-                          'Calender',
+                          'Map',
                           style: TextStyle(
                             color: currentTab == 1 ? Colors.green : Colors.grey,
                           ),
